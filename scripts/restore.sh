@@ -34,3 +34,6 @@ F_MESSAGE=$(jq -n --arg m "$MESSAGE" '{"blocks": [{"type": "section", "text": {"
 # curl -X POST -H 'Content-type: application/json' --data "$F_MESSAGE" "$SLACK_WEBHOOK"
 
 echo "$BACKUP_TYPE backup attempt concluded..."
+
+# View the data by running a VictoriaMetrics container with a bind mount to the restored contents from vmrestore
+# docker run -d -p 8428:8428 -v restore:/victoria-metrics-data victoriametrics/victoria-metrics -storageDataPath=/victoria-metrics-data
